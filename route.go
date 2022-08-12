@@ -6,36 +6,36 @@ import (
 	"time"
 )
 
-type channel struct {
-	Workspace string `json:"workspace"`
-	Channel   string `json:"channel"`
+type workspaces struct {
+	Name    string   `json:"workspace"`
+	Channel []string `json:"channel"`
 }
 
 func AskRights() func(c *gin.Context) {
-	data := []channel{
+	data := []workspaces{
 		{
-			Workspace: "berty",
-			Channel:   "general",
+			Name:    "berty",
+			Channel: []string{"general"},
 		},
 		{
-			Workspace: "berty",
-			Channel:   "vip",
+			Name:    "berty",
+			Channel: []string{"vip"},
 		},
 		{
-			Workspace: "berty",
-			Channel:   "admin",
+			Name:    "berty",
+			Channel: []string{"admin"},
 		},
 		{
-			Workspace: "territori",
-			Channel:   "general",
+			Name:    "territori",
+			Channel: []string{"general"},
 		},
 		{
-			Workspace: "territori",
-			Channel:   "vip",
+			Name:    "territori",
+			Channel: []string{"vip"},
 		},
 		{
-			Workspace: "berty",
-			Channel:   "admin",
+			Name:    "berty",
+			Channel: []string{"admin"},
 		},
 	}
 
@@ -48,7 +48,7 @@ func AskRights() func(c *gin.Context) {
 		}
 
 		rand.Seed(time.Now().Unix())
-		var perm []channel
+		var perm []workspaces
 		perm = append(perm, data[0])
 		perm = append(perm, data[3])
 
